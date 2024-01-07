@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-from odoo import _, fields, models, api
+from odoo import _, fields, models
 
 
 class SalesChannel(models.Model):
