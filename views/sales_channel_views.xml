@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form View for Sales Channel with Chatter -->
+        <record id="view_sales_channel_form" model="ir.ui.view">
+            <field name="name">sales.channel.form</field>
+            <field name="model">sales.channel</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" string="Nombre"/>
+                                <field name="code" readonly="1" string="Codigo"/>
+                                <field name="warehouse_id" required="1" string="Depósito"/>
+                                <field name="journal_id" required="1" string="Diario"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree View for Sales Channel -->
+        <record id="view_sales_channel_tree" model="ir.ui.view">
+            <field name="name">sales.channel.tree</field>
+            <field name="model">sales.channel</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="Nombre"/>
+                    <field name="code" string="Codigo"/>
+                    <field name="warehouse_id" string="Deposito"/>
+                    <field name="journal_id" string="Diario"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Action for Sales Channel Tree View -->
+        <record id="action_sales_channel_tree" model="ir.actions.act_window">
+            <field name="name">Canales de Venta</field>
+            <field name="res_model">sales.channel</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_sales_channel_tree"/>
+        </record>
+        
+        <!-- Menu Item for Sales Channel -->
+        <menuitem
+            id="root_sales_channel"
+            name= "Administrador de Canales"
+            parent="sale.menu_sale_config"
+            sequence="50"
+        />
+        
+        <menuitem
+            id="menu_item_sales_channel"
+            name= "Canales de Venta"
+            parent="root_sales_channel"
+            action="action_sales_channel_tree"
+        />
+
+    </data>
+</odoo>
