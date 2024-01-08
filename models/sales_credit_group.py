@@ -1,8 +1,7 @@
 # -*- encoding: utf-8 -*-
 from odoo import _, fields, models, api
 from odoo.exceptions import ValidationError
-import logging
-_logger = logging.getLogger('Sales Credit Group')
+
 class SalesCreditGroup(models.Model):
     _name = 'sales.credit.group'
     _description = 'Gestiona los creditos para diferentes clientes'
@@ -51,15 +50,9 @@ class SalesCreditGroup(models.Model):
     def get_so(self):
         for group in self:
             sale_orders = group.partner_ids.mapped('sale_order_ids').filtered(lambda so: so.state == 'sale' and so.invoice_status == 'to invoice')
-            _logger.info('********************************')
-            _logger.info(sale_orders)
-            _logger.info('********************************')
             return sale_orders
     
     def get_invoices(self):
         for group in self:
             unpaid_invoices = group.partner_ids.mapped('invoice_ids').filtered(lambda inv: inv.state == 'posted' and inv.amount_residual > 0)
-            _logger.info('********************************')
-            _logger.info(unpaid_invoices)
-            _logger.info('********************************')
             return unpaid_invoices
