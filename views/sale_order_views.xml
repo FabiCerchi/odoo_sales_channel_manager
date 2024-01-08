@@ -11,4 +11,15 @@
             </field>
         </field>
     </record>
+    
+    <record id="sales_channel_view_sale_order_tree_inherit" model="ir.ui.view">
+        <field name="name">sales.channel.sale.order.tree.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_order']" position="after">
+                <field name="credit_status"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>
