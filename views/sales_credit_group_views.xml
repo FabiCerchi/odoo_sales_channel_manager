@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_sales_credit_group_form" model="ir.ui.view">
+            <field name="name">sales.credit.group.form</field>
+            <field name="model">sales.credit.group</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="sale_channel_id"/>
+                                <field name="currency_id"/>
+                                <field name="global_credit"/>
+                                <field name="used_credit"/>
+                                <field name="avaiable_credit"/>
+                                <field name="partner_ids"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_sales_credit_group_tree" model="ir.ui.view">
+            <field name="name">sales.credit.group.tree</field>
+            <field name="model">sales.credit.group</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="sale_channel_id"/>
+                    <field name="global_credit"/>
+                    <field name="used_credit"/>
+                    <field name="avaiable_credit"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_sales_credit_group_tree" model="ir.actions.act_window">
+            <field name="name">Grupos de Credito</field>
+            <field name="res_model">sales.credit.group</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_sales_credit_group_tree"/>
+        </record>
+        
+        <menuitem
+            id="menu_item_sales_credit_group"
+            name= "Grupos de Credito"
+            parent="root_sales_channel"
+            sequence="60"
+            action="action_sales_credit_group_tree"
+        />
+        
+    </data>
+</odoo>

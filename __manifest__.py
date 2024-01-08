@@ -18,6 +18,7 @@
         'views/sale_order_views.xml',
         'views/account_move_views.xml',
         'views/stock_picking_views.xml',
+        'views/sales_credit_group_views.xml',
     ],
     "installable": True,
     "application": True,
