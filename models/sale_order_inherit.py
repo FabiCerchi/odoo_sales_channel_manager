@@ -43,8 +43,8 @@ class SaleOrderInherit(models.Model):
 
     #Override
     def action_confirm(self):
-        order = super(SaleOrderInherit, self)._prepare_invoice()
         for rec in self:
             if rec.credit_status == 'blocked_credit':
                 raise ValidationError('No se puede confirmar la venta, el credito esta bloqueado')
+        order = super(SaleOrderInherit, self).action_confirm()
         return order

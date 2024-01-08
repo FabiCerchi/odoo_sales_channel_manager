@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <report
+            id="report_credit_group"
+            string="Reporte de credito"
+            model="sales.credit.group"
+            report_type="qweb-pdf"
+            name="sales_channel_manager.report_sales_credit_group"
+        />
+
+        <template id="report_sales_credit_group">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <!-- Report Header -->
+                            <h2>Report for Sales Credit Group</h2>
+                            <p>Nombre del grupo: <span t-field="doc.name"/></p>
+                            <p>Código del grupo: <span t-field="doc.code"/></p>
+                            <p>Canal de venta: <span t-field="doc.sale_channel_id.name"/></p>
+                            <h4>Clientes asociados al grupo de credito:</h4>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Número de documento</th>
+                                        <th>Teléfono</th>
+                                        <th>Correo electrónico</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="doc.partner_ids" t-as="partner">
+                                        <tr>
+                                            <td><span t-field="partner.name"/></td>
+                                            <td><span t-field="partner.vat"/></td>
+                                            <td><span t-field="partner.phone"/></td>
+                                            <td><span t-field="partner.email"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                            
+                            <h3>Órdenes de venta:</h3>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Número</th>
+                                        <th>Fecha</th>
+                                        <th>Importe Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="sale_order_ids" t-value="doc.get_so()"/>
+                                    <t t-foreach="sale_order_ids" t-as="order">
+                                        <tr>
+                                            <td><span t-field="order.name"/></td>
+                                            <td><span t-field="order.date_order"/></td>
+                                            <td><span t-field="order.amount_total"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+
+                            <h3>Facturas de venta:</h3>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Número</th>
+                                        <th>Fecha</th>
+                                        <th>Importe Adeudado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="invoices_ids" t-value="doc.get_invoices()"/>
+                                    <t t-foreach="invoices_ids" t-as="invoice">
+                                        <tr>
+                                            <td><span t-field="invoice.name"/></td>
+                                            <td><span t-field="invoice.invoice_date"/></td>
+                                            <td><span t-field="invoice.amount_residual"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
