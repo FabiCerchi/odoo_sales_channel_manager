@@ -15,8 +15,7 @@
                 <t t-foreach="docs" t-as="doc">
                     <t t-call="web.external_layout">
                         <div class="page">
-                            <!-- Report Header -->
-                            <h2>Report for Sales Credit Group</h2>
+                            <h2>Datos del grupo de crédito</h2>
                             <p>Nombre del grupo: <span t-field="doc.name"/></p>
                             <p>Código del grupo: <span t-field="doc.code"/></p>
                             <p>Canal de venta: <span t-field="doc.sale_channel_id.name"/></p>
