@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sales_channel_view_res_partner_form_inherit" model="ir.ui.view">
+        <field name="name">sales.channel.res.partner.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="category_id" position="after">
+                <field name="credit_control" widget="radio"/>
+                <!-- Resolvemos mas rapido con un dominio para que sea requerido almenos uno cuando el credit_control sea si-->
+                <field name="credit_group_ids" widget="many2many_tags" attrs="{'invisible': [('credit_control', '!=', 'yes')], 'required': [('credit_control', '=', 'yes')]}"/>
+            </field>
+        </field>
+    </record>
+</odoo>

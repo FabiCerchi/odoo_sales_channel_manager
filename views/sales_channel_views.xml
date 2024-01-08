@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- Form View for Sales Channel with Chatter -->
+
         <record id="view_sales_channel_form" model="ir.ui.view">
             <field name="name">sales.channel.form</field>
             <field name="model">sales.channel</field>
@@ -13,6 +13,7 @@
                                 <field name="name" string="Nombre"/>
                                 <field name="code" readonly="1" string="Codigo"/>
                                 <field name="warehouse_id" required="1" string="Depósito"/>
+                                <!-- podemos aplicar un dominio al journal para que sea solo de venta-->
                                 <field name="journal_id" required="1" string="Diario"/>
                             </group>
                         </group>
@@ -25,7 +26,6 @@
             </field>
         </record>
 
-        <!-- Tree View for Sales Channel -->
         <record id="view_sales_channel_tree" model="ir.ui.view">
             <field name="name">sales.channel.tree</field>
             <field name="model">sales.channel</field>
@@ -39,15 +39,13 @@
             </field>
         </record>
         
-        <!-- Action for Sales Channel Tree View -->
         <record id="action_sales_channel_tree" model="ir.actions.act_window">
             <field name="name">Canales de Venta</field>
             <field name="res_model">sales.channel</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="view_sales_channel_tree"/>
         </record>
-        
-        <!-- Menu Item for Sales Channel -->
+
         <menuitem
             id="root_sales_channel"
             name= "Administrador de Canales"

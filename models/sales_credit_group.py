@@ -1,8 +1,6 @@
 # -*- encoding: utf-8 -*-
 from odoo import _, fields, models, api
 from odoo.exceptions import ValidationError
-import logging
-_logger = logging.getLogger('Sales credit Group')
 
 class SalesCreditGroup(models.Model):
     _name = 'sales.credit.group'

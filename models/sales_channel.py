@@ -1,7 +1,6 @@
 # -*- encoding: utf-8 -*-
 from odoo import _, fields, models
 
-
 class SalesChannel(models.Model):
     _name = 'sales.channel'
     _description = 'Define un canal para administrar las ventas'

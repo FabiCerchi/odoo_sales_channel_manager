@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
             <field name="payment_term_id" position="after">
                 <field name="sale_channel_id" options="{'no_open':True,'no_create': True}"/>
+                <field name="credit_status"/>
             </field>
         </field>
     </record>

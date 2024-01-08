@@ -19,6 +19,7 @@
         'views/account_move_views.xml',
         'views/stock_picking_views.xml',
         'views/sales_credit_group_views.xml',
+        'views/res_partner_inherit_views.xml'
     ],
     "installable": True,
     "application": True,
