@@ -7,7 +7,7 @@ class SalesChannel(models.Model):
     _description = 'Define un canal para administrar las ventas'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     
-    name = fields.Char(string = 'Nombre', required = True, copy = False, tracking = True)
+    name = fields.Char(string = 'Nombre', required = True, copy = False, tracking = True, unique = True)
     code = fields.Char(string = 'Codigo', readonly = True, copy = False)
     #Tomo la decision que ambos campos sean requeridos para no indicar alguno por default.
     warehouse_id = fields.Many2one('stock.warehouse', required = True, copy = False)
