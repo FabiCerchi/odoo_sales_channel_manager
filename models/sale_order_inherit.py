@@ -46,5 +46,10 @@ class SaleOrderInherit(models.Model):
         for rec in self:
             if rec.credit_status == 'blocked_credit':
                 raise ValidationError('No se puede confirmar la venta, el credito esta bloqueado')
+            
+            #Definimos que al realizar la confirmacion de una venta es un cliente ingresado para la suma de la sequencia del canal
+            if rec.sale_channel_id and rec.sale_channel_id.sequence_id:
+                next_value = self.env['ir.sequence'].next_by_code(rec.sale_channel_id.sequence_id.code)
+                rec.sale_channel_id.code = next_value or 'Nuevo'
         order = super(SaleOrderInherit, self).action_confirm()
         return order
