@@ -8,6 +8,8 @@
     "license": "LGPL-3",
     "depends": [
         "base",
+        "contacts",
+        "sale_management",
         "account",
         "sale_stock",
     ],
