@@ -138,8 +138,8 @@ canal con ese código sino no existe debe devolver un json con el siguiente form
 
 ```json
 {
-    'status': 400,
-    'message': "No se encontró el canal CH000000"
+    "status": 400,
+    "message": "No se encontró el canal CH000000"
 }
 ```
 
@@ -148,7 +148,7 @@ json con el siguiente formato
 
 ```json
 {
-    'status': 200,
-    'message': "OK"
+    "status": 200,
+    "message": "OK"
 }
 ```
